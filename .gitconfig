@@ -1,0 +1,7 @@
+[user]
+	name = Ender Wan
+	email = wanjiadong@gmail.com
+[core]
+	editor = emacs
+[merge]
+	tool = vimdiff
