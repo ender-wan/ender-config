@@ -28,5 +28,8 @@
    kept-old-versions 2
    version-control t)       ; use versioned backups
 
+;; show line numbers
+(global-linum-mode t)
+
 ;;set color theme
 (load-theme 'wombat t)
