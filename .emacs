@@ -44,3 +44,7 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
 (ac-config-default)
+
+;; highlight the match parenthesis when cursor on a parenthesis
+(show-paren-mode t)
+(setq show-paren-delay 0)
