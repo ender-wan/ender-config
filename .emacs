@@ -28,14 +28,9 @@
    kept-old-versions 2
    version-control t)       ; use versioned backups
 
-<<<<<<< HEAD
 ;; If current emacs version less than 24, do not load-theme
 (if (>= (string-to-number (substring (emacs-version) 10)) 24)
     (load-theme 'wombat t))
-=======
+
 ;; show line numbers
 (global-linum-mode t)
-
-;;set color theme
-(load-theme 'wombat t)
->>>>>>> d7ae54079fc0f21ea22d3447cc0e5e16c572bd67
