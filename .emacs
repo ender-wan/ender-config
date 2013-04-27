@@ -28,5 +28,6 @@
    kept-old-versions 2
    version-control t)       ; use versioned backups
 
-;;set color theme
-(load-theme 'wombat t)
+;; If current emacs version less than 24, do not load-theme
+(if (>= (string-to-number (substring (emacs-version) 10)) 24)
+    (load-theme 'wombat t))
