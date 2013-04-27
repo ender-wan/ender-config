@@ -28,9 +28,13 @@
    kept-old-versions 2
    version-control t)       ; use versioned backups
 
+;; If emacs version more than "version", then excute what you want
+(defmacro emacs-more-than (version excute)
+  (if (string< version (substring (emacs-version) 10))
+      excute))
+
 ;; If current emacs version less than 24, do not load-theme
-(if (>= (string-to-number (substring (emacs-version) 10)) 24)
-    (load-theme 'wombat t))
+(emacs-more-than "24" (load-theme 'wombat t))
 
 ;; show line numbers
-(global-linum-mode t)
+(emacs-more-than "23" (global-linum-mode t))
