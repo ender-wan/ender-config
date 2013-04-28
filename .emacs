@@ -28,15 +28,15 @@
    kept-old-versions 2
    version-control t)       ; use versioned backups
 
-;; If emacs version more than "version", then excute what you want
-(defmacro emacs-more-than (version excute)
+;; If emacs version more than "version", then do what you want
+(defmacro emacs-more-than (version dosome)
   (if (string< version (substring (emacs-version) 10))
-      excute))
+      dosome))
 
-;; If current emacs version less than 24, do not load-theme
+;; load-theme just support version 24
 (emacs-more-than "24" (load-theme 'wombat t))
 
-;; show line numbers
+;; global-linum-mode just support version 23 and later
 (emacs-more-than "23" (global-linum-mode t))
 
 ;; config for auto-complete
