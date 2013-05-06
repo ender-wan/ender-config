@@ -29,9 +29,9 @@
    version-control t)       ; use versioned backups
 
 ;; If emacs version more than "version", then do what you want
-(defmacro emacs-more-than (version dosome)
-  (if (string< version (substring (emacs-version) 10))
-      dosome))
+(defmacro emacs-more-than (version &rest dosome)
+  (when (string< version (substring (emacs-version) 10))
+      `(progn ,@dosome)))
 
 ;; load-theme just support version 24
 (emacs-more-than "24" (load-theme 'wombat t))
@@ -48,3 +48,12 @@
 ;; highlight the match parenthesis when cursor on a parenthesis
 (show-paren-mode t)
 (setq show-paren-delay 0)
+
+;; hide welcome screen.
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
+
+;; set up undo-tree
+(emacs-more-than "24" (add-to-list 'load-path "~/.emacs.d/elpa/undo-tree-0.6.3")
+		 (require 'undo-tree)		 
+		 (global-undo-tree-mode))
