@@ -54,6 +54,6 @@
 (setq inhibit-startup-message t)
 
 ;; set up undo-tree
-(emacs-more-than "24" (add-to-list 'load-path "~/.emacs.d/elpa/undo-tree-0.6.3")
-		 (require 'undo-tree)		 
-		 (global-undo-tree-mode))
+(add-to-list 'load-path "~/.emacs.d/elpa/undo-tree-0.6.3")
+(require 'undo-tree)		 
+(global-undo-tree-mode)
