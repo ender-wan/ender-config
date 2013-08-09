@@ -5,14 +5,19 @@ name=$(ls -al | grep *.mkv | awk '{print $5, $9}' | sort | tail -n 1 | \
       awk '{print $2}')
 
 len=${#name}
-name=${name:0:len-4}
+if [ $len -eq 0 ]
+then
+    echo "not found mkv file in this directory"
+    exit 0 
+fi
+name=${name:0:$len-4}
 
 idx=0
 for sn in $(ls *.srt *.ass)
 do
     if [ $(awk -v "sn=$sn" -v "name=$name" 'BEGIN{print index(sn, name)}') == 1 ]
     then
-        echo "Ignore: subtitle:$sn name:$name"
+        echo "Ignore: subtitle:$sn      film name:$name"
         continue
     fi
     ext=${sn:(-4)}

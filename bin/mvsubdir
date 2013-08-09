@@ -7,7 +7,7 @@ do
     then
         echo "In the $dir"
         cd $dir
-        sh ~/bin/mvcdir
+        ~/bin/mvcdir
         cd ..
     fi
 done
