@@ -1,0 +1,39 @@
+#! /bin/bash
+# modify all subtitle filename as name of movie
+
+function mv_subtitle_as_mkv {
+    name=$(ls -al | grep *.mkv | awk '{print $5, $9}' | sort | tail -n 1 | \
+          awk '{print $2}')
+
+    len=${#name}
+    name=${name:0:len-4}
+
+    idx=0
+    for sn in $(ls *.srt *.ass)
+    do
+        if [ $(awk -v "sn=$sn" -v "name=$name" 'BEGIN{print index(sn, name)}') == 1 ]
+        then
+            echo "Ignore: subtitle:$sn name:$name"
+            continue
+        fi
+        ext=${sn:(-4)}
+        while [ -f $name$idx$ext ]
+        do
+            idx=$(expr $idx + 1)
+        done
+        echo "      $sn rename as $name$idx$ext"
+        mv $sn $name$idx$ext
+        idx=$(expr $idx + 1)
+    done
+}
+
+for dir in $(ls .)
+do
+    if [ -d $dir ]
+    then
+        echo "In the $dir"
+        cd $dir
+        mv_subtitle_as_mkv
+        cd ..
+    fi
+done
