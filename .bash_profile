@@ -1,4 +1,3 @@
-
 # Setting PATH for Python 2.7
 # The orginal version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
@@ -7,11 +6,6 @@ export PATH
 # Setting PATH for EPD_free-7.3-2
 # The orginal version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/Current/bin:${PATH}"
-export PATH
-
-# For Nand2Tetris, The project and simulator from 
-# "The Elements of Computing Systems: Building a Modern Computer from First Principles"
-PATH="~/Documents/nand2tetris/tools:${PATH}"
 export PATH
 
 if [ -f ~/.bash_aliases ]; then
