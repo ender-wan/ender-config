@@ -1,0 +1,13 @@
+#! /bin/bash
+# rename all subtitle as name of movie in the subdir
+
+for dir in $(ls .)
+do
+    if [ -d $dir ]
+    then
+        echo "In the $dir"
+        cd $dir
+        sh ~/bin/mvcdir
+        cd ..
+    fi
+done
