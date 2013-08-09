@@ -1,0 +1,14 @@
+#! /bin/bash
+
+confpath="~/ender-config"
+cd ~
+
+for config in $(ls $confpath)
+do
+    if [ -e $config]
+    then
+        mv $config "$config_bk"
+        rm $config
+        ln -s $confpath$config $config
+    fi
+done
