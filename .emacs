@@ -61,7 +61,8 @@
 ;; C/C++ indentation level
 (setq-default c-basic-offset 4
 	      tab-width 4
-	      indent-tabs-mode nil)
+	      indent-tabs-mode nil
+	      c-default-style "stroustrup")
 
 ;; enable desktop-save-mode
 (require 'desktop)
