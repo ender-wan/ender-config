@@ -1,5 +1,9 @@
 (set-language-environment "utf-8")
 
+(setq package-archives '(("ELPA" . "http://tromey.com/elpa/") 
+			 ("gnu"  . "http://elpa.gnu.org/packages/")
+			 ("SC"   . "http://joseito.republika.pl/sunrise-commander/")))
+
 ;;; add slime to load-path
 (add-to-list 'load-path "/Applications/lispbox-0.7/slime/")
 
@@ -57,3 +61,13 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/undo-tree-0.6.3")
 (require 'undo-tree)		 
 (global-undo-tree-mode)
+
+(global-ede-mode 1)
+(require 'semantic/sb)
+(semantic-mode 1)
+
+;; Semantic
+(global-semantic-idle-completions-mode t)
+(global-semantic-decoration-mode t)
+(global-semantic-highlight-func-mode t)
+(global-semantic-show-unmatched-syntax-mode t)
