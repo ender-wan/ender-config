@@ -62,6 +62,7 @@
 (require 'undo-tree)		 
 (global-undo-tree-mode)
 
+<<<<<<< HEAD
 (global-ede-mode 1)
 (require 'semantic/sb)
 (semantic-mode 1)
@@ -71,3 +72,56 @@
 (global-semantic-decoration-mode t)
 (global-semantic-highlight-func-mode t)
 (global-semantic-show-unmatched-syntax-mode t)
+=======
+;; C/C++ indentation level
+(setq-default c-basic-offset 4
+	      tab-width 4
+	      indent-tabs-mode nil
+	      c-default-style "stroustrup")
+
+;; enable desktop-save-mode
+(require 'desktop)
+(setq desktop-save-mode t)
+
+;; storing/restoring the buffers/tabs (specifically elscreen tabs)
+(add-to-list 'load-path "~/.emacs.d/elpa/elscreen-20120413.1107/")
+(require 'elscreen)
+(elscreen-start)
+(defvar emacs-configuration-directory
+    "~/.emacs.d/"
+    "The directory where the emacs configuration files are stored.")
+
+(defvar elscreen-tab-configuration-store-filename
+    (concat emacs-configuration-directory ".elscreen")
+    "The file where the elscreen tab configuration is stored.")
+
+(defun elscreen-store ()
+    "Store the elscreen tab configuration."
+    (interactive)
+    (if (desktop-save emacs-configuration-directory)
+        (with-temp-file elscreen-tab-configuration-store-filename
+            (insert (prin1-to-string (elscreen-get-screen-to-name-alist))))))
+
+(push #'elscreen-store kill-emacs-hook)
+
+(defun elscreen-restore ()
+    "Restore the elscreen tab configuration."
+    (interactive)
+    (if (desktop-read)
+        (let ((screens (reverse
+                        (read
+                         (with-temp-buffer
+                          (insert-file-contents elscreen-tab-configuration-store-filename)
+                          (buffer-string))))))
+            (while screens
+                (setq screen (car (car screens)))
+                (setq buffers (split-string (cdr (car screens)) ":"))
+                (if (eq screen 0)
+                    (switch-to-buffer (car buffers))
+                    (elscreen-find-and-goto-by-buffer (car buffers) t t))
+                (while (cdr buffers)
+                    (switch-to-buffer-other-window (car (cdr buffers)))
+                    (setq buffers (cdr buffers)))
+                (setq screens (cdr screens))))))
+(elscreen-restore)
+>>>>>>> d05b7e4cba828df6f3e11e2ba0b497e600a0e6e7
