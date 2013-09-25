@@ -62,7 +62,7 @@
 (require 'undo-tree)		 
 (global-undo-tree-mode)
 
-<<<<<<< HEAD
+
 (global-ede-mode 1)
 (require 'semantic/sb)
 (semantic-mode 1)
@@ -72,7 +72,7 @@
 (global-semantic-decoration-mode t)
 (global-semantic-highlight-func-mode t)
 (global-semantic-show-unmatched-syntax-mode t)
-=======
+
 ;; C/C++ indentation level
 (setq-default c-basic-offset 4
 	      tab-width 4
@@ -124,4 +124,4 @@
                     (setq buffers (cdr buffers)))
                 (setq screens (cdr screens))))))
 (elscreen-restore)
->>>>>>> d05b7e4cba828df6f3e11e2ba0b497e600a0e6e7
+
