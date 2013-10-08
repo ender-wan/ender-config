@@ -58,14 +58,6 @@
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 
-<<<<<<< HEAD
-;; set up undo-tree
-(require 'undo-tree)		 
-(global-undo-tree-mode)
-
-
-=======
->>>>>>> 4b45cdba2bed7c02c58cc42a518af18a7c5e60b4
 (global-ede-mode 1)
 (require 'semantic/sb)
 (semantic-mode 1)
@@ -75,6 +67,11 @@
 (global-semantic-decoration-mode t)
 (global-semantic-highlight-func-mode t)
 (global-semantic-show-unmatched-syntax-mode t)
+
+;; markdown mode
+(add-to-list 'load-path "~/.emacs.d/markdown-mode/")
+(autoload 'markdown-mode "markdown-mode" t)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'". markdown-mode))
 
 ;; C/C++ indentation level
 (setq-default c-basic-offset 4
@@ -137,10 +134,5 @@
 ;; If you want to create a file, visit that file with C-x C-f,
 ;; then enter the text in that file's own buffer.
 
-;; markdown mode
-(add-to-list 'load-path "~/.emacs.d/markdown-mode/")
-(autoload 'markdown-mode "markdown-mode" t)
-(add-to-list 'auto-mode-alist '("\\.markdown\\'". markdown-mode))
-
-;; let emacs shell load .bashrc file
+; let emacs shell load .bashrc file
 (setq shell-command-switch "-ic")
