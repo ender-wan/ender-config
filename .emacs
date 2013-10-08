@@ -44,15 +44,16 @@
 (emacs-more-than "23" (global-linum-mode t))
 
 ;; config for auto-complete
-(add-to-list 'load-path "~/.emacs.d/auto-complete/")
-(require 'auto-complete-config)
-(autoload 'auto-complete-mode "auto-complete-mode" t)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
-(ac-config-default)
-(add-to-list 'ac-modes 'lisp-mode)
+(let ((ac-dir "~/.emacs.d/auto-complete/"))
+  (add-to-list 'load-path ac-dir)
+  (require 'auto-complete-config)
+  (autoload 'auto-complete-mode "auto-complete-mode" t)
+  (add-to-list 'ac-dictionary-directories (concat ac-dir "ac-dict"))
+  (ac-config-default)
+  (add-to-list 'ac-modes 'lisp-mode))
 
 ;; highlight the match parenthesis when cursor on a parenthesis
-(setq show-paren-mode t)
+(show-paren-mode t)
 (setq show-paren-delay 0)
 
 ;; hide welcome screen.
