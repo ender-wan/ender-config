@@ -46,6 +46,7 @@
 ;; config for auto-complete
 (add-to-list 'load-path "~/.emacs.d/auto-complete/")
 (require 'auto-complete-config)
+(auto-complete-mode t)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
 (ac-config-default)
 
@@ -58,7 +59,6 @@
 (setq inhibit-startup-message t)
 
 ;; set up undo-tree
-(add-to-list 'load-path "~/.emacs.d/elpa/undo-tree-0.6.3")
 (require 'undo-tree)		 
 (global-undo-tree-mode)
 
@@ -84,7 +84,6 @@
 (setq desktop-save-mode t)
 
 ;; storing/restoring the buffers/tabs (specifically elscreen tabs)
-(add-to-list 'load-path "~/.emacs.d/elpa/elscreen-20120413.1107/")
 (require 'elscreen)
 (elscreen-start)
 (defvar emacs-configuration-directory
@@ -125,3 +124,10 @@
                 (setq screens (cdr screens))))))
 (elscreen-restore)
 
+;; markdown mode
+(add-to-list 'load-path "~/.emacs.d/markdown-mode/")
+(autoload 'markdown-mode "markdown-mode" t)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'". markdown-mode))
+
+;; let emacs shell load .bashrc file
+(setq shell-command-switch "-ic")
