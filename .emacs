@@ -46,12 +46,13 @@
 ;; config for auto-complete
 (add-to-list 'load-path "~/.emacs.d/auto-complete/")
 (require 'auto-complete-config)
-(auto-complete-mode t)
+(autoload 'auto-complete-mode "auto-complete-mode" t)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
 (ac-config-default)
+(add-to-list 'ac-modes 'lisp-mode)
 
 ;; highlight the match parenthesis when cursor on a parenthesis
-(show-paren-mode t)
+(setq show-paren-mode t)
 (setq show-paren-delay 0)
 
 ;; hide welcome screen.
@@ -72,6 +73,9 @@
 (add-to-list 'load-path "~/.emacs.d/markdown-mode/")
 (autoload 'markdown-mode "markdown-mode" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'". markdown-mode))
+
+;; lisp mode
+(add-to-list 'auto-mode-alist '("\\.cl\\'". lisp-mode))
 
 ;; C/C++ indentation level
 (setq-default c-basic-offset 4
@@ -130,9 +134,7 @@
             (switch-to-buffer-other-window (car (cdr buffers)))
             (setq buffers (cdr buffers)))
           (setq screens (cdr screens))))))
-(elscreen-restore);; This buffer is for notes you don't want to save, and for Lisp evaluation.
-;; If you want to create a file, visit that file with C-x C-f,
-;; then enter the text in that file's own buffer.
+;;(elscreen-restore);; This buffer is for notes you don't want to save, and for Lisp evaluation.
 
 ; let emacs shell load .bashrc file
 (setq shell-command-switch "-ic")
