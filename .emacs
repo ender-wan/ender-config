@@ -7,7 +7,7 @@
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
 
 ;;; add slime to load-path
-(add-to-list 'load-path "/Applications/lispbox-0.7/slime/")
+;;(add-to-list 'load-path "/Applications/lispbox-0.7/slime/")
 
 ;;; Note that if you save a heap image, the character
 ;;; encoding specified on the command line will be preserved,
@@ -15,14 +15,14 @@
 ;;(setq inferior-lisp-program "/Applications/lispbox-0.7/ccl/dx86cl64")
 
 ;; add all lisp implementations to slime
-(setq slime-lisp-implementations
-      '((clozurecl ("/Applications/lispbox-0.7/ccl/dx86cl64"))
-        (CLISP ("/opt/local/bin/clisp"))
-        (sbcl ("/opt/local/bin/sbcl"))))
+;;(setq slime-lisp-implementations
+;;      '((clozurecl ("/Applications/lispbox-0.7/ccl/dx86cl64"))
+;;        (CLISP ("/opt/local/bin/clisp"))
+;;        (sbcl ("/opt/local/bin/sbcl"))))
 
-(require 'slime)
-(setq slime-net-coding-system 'utf-8-unix)
-(slime-setup '(slime-fancy))
+;;(require 'slime)
+;;(setq slime-net-coding-system 'utf-8-unix)
+;;(slime-setup '(slime-fancy))
 
 ;; set emacs backup to one directory
 (setq backup-by-copying t      ; don't clobber symlinks
@@ -44,13 +44,13 @@
 (emacs-more-than "23" (global-linum-mode t))
 
 ;; config for auto-complete
-(let ((ac-dir "~/.emacs.d/auto-complete/"))
-  (add-to-list 'load-path ac-dir)
-  (require 'auto-complete-config)
-  (autoload 'auto-complete-mode "auto-complete-mode" t)
-  (add-to-list 'ac-dictionary-directories (concat ac-dir "ac-dict"))
-  (ac-config-default)
-  (add-to-list 'ac-modes 'lisp-mode))
+;;(let ((ac-dir "~/.emacs.d/auto-complete/"))
+;;  (add-to-list 'load-path ac-dir)
+;;  (require 'auto-complete-config)
+;;  (autoload 'auto-complete-mode "auto-complete-mode" t)
+;;  (add-to-list 'ac-dictionary-directories (concat ac-dir "ac-dict"))
+;;  (ac-config-default)
+;;  (add-to-list 'ac-modes 'lisp-mode))
 
 ;; highlight the match parenthesis when cursor on a parenthesis
 (show-paren-mode t)
@@ -70,10 +70,10 @@
 (global-semantic-highlight-func-mode t)
 (global-semantic-show-unmatched-syntax-mode t)
 
-;; markdown mode
-(add-to-list 'load-path "~/.emacs.d/markdown-mode/")
-(autoload 'markdown-mode "markdown-mode" t)
-(add-to-list 'auto-mode-alist '("\\.markdown\\'". markdown-mode))
+;;; markdown mode
+;;(add-to-list 'load-path "~/.emacs.d/markdown-mode/")
+;;(autoload 'markdown-mode "markdown-mode" t)
+;;(add-to-list 'auto-mode-alist '("\\.markdown\\'". markdown-mode))
 
 ;; lisp mode
 (add-to-list 'auto-mode-alist '("\\.cl\\'". lisp-mode))
